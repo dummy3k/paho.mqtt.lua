@@ -1,8 +1,8 @@
-Lua MQTT client library (version 0.2 2012-06-01)
+Lua MQTT client library
 =======================
 
-This project is part of the
-[Eclipse Paho project](http://eclipse.org/paho)
+This a "port" of the [Eclipse Paho project](http://eclipse.org/paho)
+for the OpenComputers environment.
 
 Contents
 --------
@@ -17,6 +17,7 @@ Contents
 - [Known problems](#problems)
 
 <a name="introduction" />
+
 Introduction
 ------------
 This project provides a client-side (only) implementation of the
@@ -59,6 +60,7 @@ _(which requires your PSP to be able to run unsigned executables)._
 ![PlayStation Portable](https://github.com/geekscape/mqtt_lua/raw/master/images/playstation_portable.jpg)
 
 <a name="restrictions" />
+
 Protocol implementation and restrictions
 ----------------------------------------
 - Always assumes MQTT connection "clean session" enabled.
@@ -74,6 +76,7 @@ Protocol implementation and restrictions
   [Lua Player HM](http://en.wikipedia.org/wiki/Lua_Player_HM).
 
 <a name="download" />
+
 Download
 --------
 The Lua MQTT client library is cross-platform and should work on any
@@ -82,6 +85,7 @@ platform that supports the Lua programming language and network sockets.
 - [Download Lua MQTT client library](https://github.com/geekscape/mqtt_lua/archives/master)
 
 <a name="feedback" />
+
 Feedback and issues
 -------------------
 Tracking is managed via GitHub ...
@@ -89,6 +93,7 @@ Tracking is managed via GitHub ...
 - [Enhancements requests and issue tracking](https://github.com/geekscape/mqtt_lua/issues)
 
 <a name="installation" />
+
 Installation
 ------------
 You may choose to install an MQTT server either on the same or a different
@@ -114,6 +119,7 @@ Lua MQTT client library (source code) from GitHub ...
 * TODO
 
 <a name="usage" />
+
 Usage
 -----
 The Lua MQTT client library comes with three command line utilites,
@@ -174,6 +180,7 @@ Only the _--topic_ parameter is required.
       -w,--will_topic                          Last will and testament topic
 
 <a name="example" />
+
 Example code
 ------------
 The complete functioning code can be viewed here ...
@@ -219,6 +226,7 @@ They can be run from the _lua/_ parent directory, as follow ...
     example/example_00.lua
 
 <a name="api" />
+
 MQTT client Library API
 -----------------------
 Once the MQTT client library has been included (via _require_), one or more
@@ -336,6 +344,7 @@ topics are no longer received.
       topics -- table of strings, e.g. { "topic1", "topic2" }
 
 <a name="problems" />
+
 Known problems
 --------------
 

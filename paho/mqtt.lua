@@ -72,8 +72,11 @@
 -- ------------------------------------------------------------------------- --
 
 function isPsp() return(Socket ~= nil) end
+function isOC() return(package.loaded['component'] ~= nil) end
 
-if (not isPsp()) then
+if isOC() then
+    socket = require("socket")
+elseif (not isPsp()) then
   require("socket")
   require("io")
   require("ltn12")
@@ -600,7 +603,7 @@ function MQTT.client:parse_message_conack(                      -- Internal API
   if (return_code ~= 0) then
     local error_message = "Unknown return code"
 
-    if (return_code <= table.getn(MQTT.CONACK.error_message)) then
+    if (return_code <= #MQTT.CONACK.error_message) then
       error_message = MQTT.CONACK.error_message[return_code]
     end
 
@@ -706,7 +709,7 @@ function MQTT.client:parse_message_suback(                      -- Internal API
     error(me .. ": Outstanding message wasn't SUBSCRIBE")
   end
 
-  local topic_count = table.getn(outstanding[2])
+  local topic_count = #outstanding[2]
 
   if (topic_count ~= remaining_length - 2) then
     error(me .. ": Didn't received expected number of topics: " .. topic_count)
