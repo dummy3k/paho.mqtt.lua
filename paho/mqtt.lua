@@ -71,8 +71,8 @@
 -- - Consider using Copas http://keplerproject.github.com/copas/manual.html
 -- ------------------------------------------------------------------------- --
 
-function isPsp() return(Socket ~= nil) end
-function isOC() return(package.loaded['component'] ~= nil) end
+local function isPsp() return(Socket ~= nil) end
+local function isOC() return(package.loaded['component'] ~= nil) end
 
 if isOC() then
     socket = require("socket")

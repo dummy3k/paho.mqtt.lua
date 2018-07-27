@@ -27,7 +27,7 @@ local function isPsp() return(Socket ~= nil) end
 local function isOC() return(package.loaded['component'] ~= nil) end
 
 if (isPsp()) then socket = Socket end                        -- Compatibility !
-if (isOC()) then socket = socket = require("socket") end
+if (isOC()) then socket = require("socket") end
 
 -- ------------------------------------------------------------------------- --
 

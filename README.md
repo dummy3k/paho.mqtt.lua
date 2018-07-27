@@ -4,6 +4,8 @@ Lua MQTT client library
 This a "port" of the [Eclipse Paho project](http://eclipse.org/paho)
 for the OpenComputers environment.
 
+oppm register dummy3k/paho.mqtt.lua
+
 Contents
 --------
 - [Introduction](#introduction)
