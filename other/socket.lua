@@ -24,13 +24,13 @@ end
 
 function socket.connect(hostname, port)
     local connection = socket.connection.create(hostname, port)
-    -- print("timeout_value", timeout_value)
-    local time_max = timeout_value
-    while not connection._connection.finishConnect() do
-        if time_max <= 0 then error("timeout") end
-        time_max = time_max - 0.1
-        os.sleep(0.1)
-    end
+    -- -- print("timeout_value", timeout_value)
+    -- local time_max = timeout_value
+    -- while not connection._connection.finishConnect() do
+        -- if time_max <= 0 then error("timeout") end
+        -- time_max = time_max - 0.1
+        -- os.sleep(0.1)
+    -- end
     return connection
 end
 
@@ -46,8 +46,14 @@ function socket.connection.create(hostname, port)
     return connection
 end
 
-function socket.connection.settimeout(value)
+function socket.connection:isConnected()
+    return not self._connection.finishConnect()
+end
+
+function socket.connection:settimeout(value)
     assert(value)
+    -- print("self", self)
+    -- print("settimeout", value)
     timeout_value = value
 end
 

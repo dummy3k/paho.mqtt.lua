@@ -115,9 +115,16 @@ local function socket_receive(socket_client, byte_count)
 end
 
 local function socket_wait_connected(socket_client)
-  if (isPsp()) then
+  if (isPsp() or isOC()) then
+    local wait_seconds = 5
     while (socket_client:isConnected() == false) do
-      System.sleep(100)
+        if isOC() then
+            os.sleep(0.1)
+        else
+            System.sleep(100)
+        end
+        wait_seconds = wait_seconds - 0.1
+        if wait_seconds <= 0 then error("timeout!") end
     end
   else
     socket_client:settimeout(0.001)     -- So that socket.recieve doesn't block
