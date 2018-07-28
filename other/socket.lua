@@ -1,5 +1,7 @@
 local component = require("component")
 
+local timeout_value = 5
+
 local socket = {}
 
 function socket.version()
@@ -22,7 +24,11 @@ end
 
 function socket.connect(hostname, port)
     local connection = socket.connection.create(hostname, port)
+    -- print("timeout_value", timeout_value)
+    local time_max = timeout_value
     while not connection._connection.finishConnect() do
+        if time_max <= 0 then error("timeout") end
+        time_max = time_max - 0.1
         os.sleep(0.1)
     end
     return connection
@@ -41,7 +47,8 @@ function socket.connection.create(hostname, port)
 end
 
 function socket.connection.settimeout(value)
-
+    assert(value)
+    timeout_value = value
 end
 
 function socket.connection:send(message)
